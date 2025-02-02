@@ -55,7 +55,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-white dark:bg-gradient-to-r dark:from-[#0E1628] dark:to-[#380643] text-black dark:text-white fixed w-full z-50 shadow-md transition-all duration-300">
+    <nav className="bg-white dark:bg-[#091B38] text-black dark:text-white fixed w-full z-50 shadow-md transition-all duration-300">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="text-3xl font-bold tracking-wide flex items-center space-x-2 text-black dark:text-yellow-400">

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { Link as ScrollLink } from "react-scroll"; // Import ScrollLink from react-scroll
 
 // Dark Mode Toggle Component
 const DarkModeToggle = () => {
@@ -29,35 +29,45 @@ const DarkModeToggle = () => {
 
 export default function Home() {
   return (
-    <main className="bg-background text-foreground min-h-screen transition-all duration-300">
+    <main
+      className="bg-cover bg-center text-foreground min-h-screen transition-all duration-300"
+      style={{
+        backgroundImage: "url('/earth-image.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       {/* Dark Mode Toggle */}
       <DarkModeToggle />
 
       {/* Hero Section with Color Gradient */}
       <section className="relative h-[90vh] flex items-center justify-center text-center px-6 bg-gradient-to-r from-[#06d3cd] to-[#04bfbf] dark:bg-gradient-to-r dark:from-[#111C2D] dark:to-[#0A0A0A]">
         <div className="absolute inset-0 animate-fadeIn">
-          <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/space-bg.jpg')" }} />
+          <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/earth-image.jpg')" }} />
           <div className="absolute inset-0 bg-gradient-to-t from-black opacity-60"></div>
         </div>
 
-        <div className="relative z-10 text-white">
+        <div className="relative z-10 text-[#e2f62f]">
           <h1 className="text-5xl md:text-6xl font-bold leading-tight transform transition-transform duration-300 hover:scale-105">
-            Explore the Universe with <span className=" text-[#fcf9f5] dark:text-blue-500">OrbitX</span>
+            Explore the Universe with <span className="text-[#fcf9f5] dark:text-blue-500">OrbitX</span>
           </h1>
           <p className="mt-4 text-lg md:text-xl opacity-80">
             Track the ISS, discover exoplanets, monitor asteroids, and more.
           </p>
-          <Link
-            href="/iss-tracker"
+          {/* Use ScrollLink here to scroll down to Live ISS Tracking */}
+          <ScrollLink
+            to="iss-tracker-section"
+            smooth={true}
+            duration={1000}
             className="mt-6 inline-block bg-gradient-to-r from-blue-500 to-indigo-500 px-6 py-3 rounded-lg text-lg font-semibold hover:from-blue-400 hover:to-indigo-400 transition-all duration-300 transform hover:scale-105"
           >
             Start Exploring 🚀
-          </Link>
+          </ScrollLink>
         </div>
       </section>
 
-      {/* Live ISS Tracker Section */}
-      <section className="py-16 px-6 text-center bg-gray-100 dark:bg-gray-900 transition-all duration-300">
+      {/* Live ISS Tracker Section with an ID to target for scrolling */}
+      <section id="iss-tracker-section" className="pt-32 py-16 px-6 text-center bg-gray-100 dark:bg-gray-900 transition-all duration-300">
         <h2 className="text-4xl font-bold text-gray-900 dark:text-white">🌍 Live ISS Tracking</h2>
         <p className="mt-2 opacity-80 text-gray-600 dark:text-gray-300">See where the International Space Station is right now.</p>
         <Link
